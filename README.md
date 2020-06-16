@@ -8,6 +8,7 @@
   <img width="600" height="300" src="https://drive.google.com/uc?export=view&id=1uO93WY-KICRMWEp0Y-bqNJMQTnH6iOR7">
 </p>
 
+
 ### Features of the system
 1. Temperature monitoring
 2. Humidity monitoring
