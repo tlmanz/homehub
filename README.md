@@ -1,4 +1,4 @@
-# Homehub
+# Homehub <img alt="GitHub issues" src="https://img.shields.io/github/issues/tharukamannapperuma/homehub?color=red">
 ## Smart Home Application with ESP8266
 
 ### Introduction
