@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  
+  <!-- Bootstrap CSS -->
+  
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <script src="./assets/fontawsome/js/all.js"></script>
+  <!-- MQTT -->
+  <script
+  src="./assets/js/paho-mqtt.js"
+  type="text/javascript"
+  ></script>
+  <title>Home Hub</title>
+</head>
+
+<body>
+  <div
+  id="main-wrapper"
+  data-theme="light"
+  data-layout="vertical"
+  data-navbarbg="skin6"
+  data-sidebartype="full"
+  data-sidebar-position="fixed"
+  data-header-position="fixed"
+  data-boxed-layout="full"
+  ></div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"
+    ><img
+    src="assets/img/tank.png"
+    width="40"
+    height="30"
+    class="d-inline-block align-top"
+    alt=""
+    /><span class="nav-text">Home Hub</span></a
+    >
+    <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+        >Home
+        <span class="sr-only">(current)</span>
+      </a>
+    </li>
+  </ul>
+</div>
+</nav>
+<!-- End of Nav Bar -->
+<!-- Main Container -->
+<div class="container-fluid">
+  <!-- This Row - 1 Contains Temp,Humidity and Gas -->
+  <div class="row">
+    <div class="col-12"><h1 class="card-title text-center" style="color: black;">Temperature, Humidity & Gas Levels</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+      <div class="card" style="height: 19rem;">
+        <div class="card-body">
+          <h5 class="card-title text-center">Temperature Status<br/><br/><i id="temp-icon"></i></h5>
+          <p class="card-text text-center" style="font-size:x-large;">
+            Temperature is<br />
+            <span class="Temperature" style="font-weight: 600; font-size: xxx-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+          </p>
+        </div>
+      </div> 
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+      <div class="card" style="height: 19rem;">
+        <div class="card-body">
+          <h5 class="card-title text-center">Humidity Status<br/><br/><i id="humid-icon"></i></h5>
+          <p class="card-text text-center" style="font-size:x-large;">
+            Humidity is<br />
+            <span class="Humidity" style="font-weight: 600; font-size: xxx-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+          </p>
+        </div>
+      </div>        
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+      <div class="card" style="height: 19rem;">
+        <div class="card-body">
+          <h5 class="card-title text-center">LPG and Smoke<br/><br/><i class="fad fa-fire-alt fa-5x" style="--fa-secondary-opacity: 1.0; --fa-primary-color: #FAC000; --fa-secondary-color: #FC6400;"></i></h5>
+          <div class="row">
+            <div class="col-6">
+              <p class="card-text text-center" style="font-size:x-large;">
+                LPG Level is<br />
+                <span class="Gas" style="font-weight: 600; font-size: x-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="card-text text-center" style="font-size:x-large;">
+                Smoke Level is<br />
+                <span class="Smoke" style="font-weight: 600; font-size: x-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      </div>        
+    </div>
+  </div>
+  <!-- End ow Row - 1 -->
+  <div class="row">
+    <div class="col-12"><h1 class="card-title text-center" style="color: black;" >Water Pump Status & Water Tank Level</h1>
+    </div>
+  </div>
+  <!-- This Row - 2 contains Water Pump and Tank Level -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+      <div class="card" style="height: 19rem;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-7">
+              <h5 class="card-title text-center">Water Pump<br/><br/><i id='pump-icon'></i></h5>
+              <p class="card-text text-center" style="font-size:x-large;text-align: center;">Pump is<br />
+                <span class="pump_stat" style="font-weight: 600; font-size: xxx-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+              </p>
+            </div>
+            <div class="col-4">
+              <div class="row" style="height:50%; margin-bottom: 1rem;">
+                <button id='pumpon' type="button" class="btn btn-primary btn-rounded btn-lg btn-block"><i class="fad fa-check fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbsp On</span></button>
+              </div>
+              <div class="row" style="height:50%;">
+                <button id='pumpoff' type="button" class="btn btn-danger btn-rounded btn-lg btn-block"><i class="fad fa-power-off fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbspOff</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+      <div class="card" style="height: 19rem;">
+        <div class="card-body">
+          <h5 class="card-title">Water Level</h5>
+          <p class="card-text">
+            <div class="wrap text-center">
+              <div class="tank waterTankHere1"></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End or Row - 2 -->
+  <div class="row">
+    <div class="col-12"><h1 class="card-title text-center" style="color: black;" >Door, Light & Fan Status</h1>
+    </div>
+  </div>
+  <!-- This is the Row - 3 and this contains Door, Bulb and Fan -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="card" style="height: 19rem; margin-bottom: 1rem;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-7">
+              <h5 class="card-title text-center">Door<br/><br/><i id='door-icon'></i></h5>
+              <p class="card-text text-center" style="font-size:x-large;text-align: center;">Door is<br />
+                <span class="door_stat" style="font-weight: 600; font-size: xx-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+              </p>
+            </div>
+            <div class="col-4">
+              <div class="row" style="height:50%;">
+                <button id='dooropen' type="button" class="btn btn-primary btn-rounded btn-lg btn-block"><i class="fad fa-check fa-2x" style="color: white;"></i><span style="font-size: large;">&nbspOpen</span></button>
+              </div>
+            </br>
+              <div class="row" style="height:50%;">
+                <button id='doorclose' type="button" class="btn btn-danger btn-rounded btn-lg btn-block"><i class="fad fa-power-off fa-2x" style="color: white;"></i><span style="font-size: large;">&nbspClose</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="card" style="height: 19rem; margin-bottom: 1rem;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-7">
+              <h5 class="card-title text-center">Light<br/><br/><i id='light-icon'></i></h5>
+              <p class="card-text text-center" style="font-size:x-large;text-align: center;">Light is<br />
+                <span class="light_stat" style="font-weight: 600; font-size: xxx-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+              </p>
+            </div>
+            <div class="col-4">
+              <div class="row" style="height:50%;">
+                <button id='lighton' type="button" class="btn btn-primary btn-rounded btn-lg btn-block"><i class="fad fa-check fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbsp On</span></button>
+              </div>
+            </br>
+              <div class="row" style="height:50%;">
+                <button id='lightoff' type="button" class="btn btn-danger btn-rounded btn-lg btn-block"><i class="fad fa-power-off fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbspOff</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+      <div class="card" style="height: 19rem; margin-bottom: 1rem;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-7">
+              <h5 class="card-title text-center">Fan<br/><br/><i class="fad fa-fan-table fa-5x" style="--fa-secondary-opacity: 1.0; --fa-primary-color: sandybrown; --fa-secondary-color: bisque;"></i></i></h5>
+              <p class="card-text text-center" style="font-size:x-large;text-align: center;">Fan is<br />
+                <span class="fan_stat" style="font-weight: 600; font-size: xxx-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+              </p>
+            </div>
+            <div class="col-4">
+              <div class="row" style="height:50%;">
+                <button id='fanon' type="button" class="btn btn-primary btn-rounded btn-lg btn-block"><i class="fad fa-check fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbsp On</span></button>
+              </div>
+            </br>
+              <div class="row" style="height:50%;">
+                <button id='fanoff' type="button" class="btn btn-danger btn-rounded btn-lg btn-block"><i class="fad fa-power-off fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbspOff</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card" style="height: 19rem;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-7">
+              <h5 class="card-title text-center">Water Pump Auto Mode<br/><br/><i class = "fas fa-hand-holding-water fa-3x"></i></h5>
+              <p class="card-text text-center" style="font-size:x-large;text-align: center;">Pump is<br />
+                <span class="auto_stat" style="font-weight: 600; font-size: xxx-large;"><i class="fas fa-circle-notch fa-spin fa-lg" style="color: red;"></i></span>
+              </p>
+            </div>
+            <div class="col-4">
+              <div class="row" style="height:50%; margin-bottom: 1rem;">
+                <button id='autoon' type="button" class="btn btn-primary btn-rounded btn-lg btn-block"><i class="fad fa-check fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbsp On</span></button>
+              </div>
+              <div class="row" style="height:50%;">
+                <button id='autooff' type="button" class="btn btn-danger btn-rounded btn-lg btn-block"><i class="fad fa-power-off fa-2x" style="color: white;"></i><span style="font-size: xx-large;">&nbspOff</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Row - 3 -->
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="./assets/js/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="./assets/js/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/waterTank.js" type="text/javascript"></script>
+<script src="./assets/js/websocket.js" type="text/javascript"></script>
+</body>
+</html>
