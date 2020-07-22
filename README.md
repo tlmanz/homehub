@@ -29,7 +29,7 @@
 - Wires
 - Vero Board
 
-### Javascript Code Walkthrough
+### JavaScript Code Brief Walkthrough
 websocket.js file is discussed here. This file is the backbone since this handles all the communications with MQTT and siplaying all in the webpage
 ```js
   function startConnect() {
@@ -94,4 +94,6 @@ This publish function publishes user inputs from the webpage to the MQTT server 
 This is the basic idea of the system when it comes to the web application side. 
 more information can be found refering http://www.steves-internet-guide.com/mqtt-websockets/ this webpage. I used online resources like this for this project
 
-### Arduino (NodeMCU) Code brief explanation
+### Arduino (NodeMCU) Code Brief Walkthrough
+
+Soon.......
