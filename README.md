@@ -40,8 +40,6 @@ websocket.js file is discussed here. This file is the backbone since this handle
     host = "test.mosquitto.org";
     port = "8081";
 
-    // Print output for the user in the messages div
-
     // Initialize new Paho client connection
     client = new Paho.MQTT.Client(host, Number(port), clientID);
 
@@ -57,4 +55,38 @@ websocket.js file is discussed here. This file is the backbone since this handle
     });
   }
 ```
-This function starts the connection to the MQTT server. In here public MQTT server was used for testing purposes. It connects to the port 8081 which is the websocket port and 8081 uses TLS encryption to connect over a secure connection. Comments are used to describe the code more.
+This function starts the connection to the MQTT server. In here public MQTT server was used for testing purposes. It connects to the port 8081 which is the websocket port and 8081 uses TLS encryption to connect over a secure connection. On successfull connection below function is called. Comments are used to describe the code more.
+
+```js
+  // Called when the client connects
+  function onConnect() {
+    // Fetch the MQTT topic from the form
+    topic = "supunpramudhitha1";
+    console.log("Connected");
+    // Subscribe to the requested topic
+    client.subscribe(topic);
+  }
+```
+This above onConnect function subscribes to the given topic in the function and it will check for message arrivals. 
+
+```js
+  // Called when a message arrives
+  function onMessageArrived(message) {
+    console.log("onMessageArrived: " + message.payloadString);
+    console.log("Message Arrived");
+    msg = JSON.parse(message.payloadString);
+    set_data(msg);
+  }
+```
+This above onMessageArrived function is called when a message is recieved by the topic and is will parse the coming data to a JSON type. Then it will cann the set_data function which displays the data on the web page.
+
+```js
+ function publish(data) {
+    var pub_msg = JSON.parse(JSON.stringify(data));
+    var message = new Paho.MQTT.Message(JSON.stringify(pub_msg));
+    message.destinationName = "supunpramudhitha2";
+    message.qos = 0;
+    client.send(message);
+  }
+```
+This publish function publishes user inputs from the webpage to the MQTT server for the given topic which NodeMCU can grab. First it will parse the strings to a JSON format and then it will convert that to a string before publishing.
