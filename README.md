@@ -3,7 +3,7 @@
 
 ### Introduction
   
-  This is a small implementation of a smart home application with ESP8266 (NodeMCU). Arduino IDE is used for programming and VSCode used for Web page development.  For communication MQTT protocol was used. JSON is the main data type used to send data between MQTT server and NodeMCU since JSON is a very versatile data format. As an interface web page was designed using HTML and JavaScript. Paho MQTT client is used in both NodeMCU and Web page. Since this is a prototype, user authentication was not considered. Hosted web page can be found in https://homehub.projects.com.lk.<br> Website is hosted with in a private server
+  This is a small implementation of a smart home application with ESP8266 (NodeMCU). Arduino IDE is used for programming and VSCode used for Web page development.  For communication MQTT protocol was used. JSON is the main data type used to send data between MQTT server and NodeMCU since JSON is a very versatile data format. As an interface web page was designed using HTML and JavaScript. Paho MQTT client is used in both NodeMCU and Web page. Since this is a prototype, user authentication was not considered. Hosted web page can be found in [homehub.projects.com.lk](https://homehub.projects.com.lk).<br> Website is hosted with in a private server
   <p align="center">
   <img width="600" height="300" src="https://drive.google.com/uc?export=view&id=1uO93WY-KICRMWEp0Y-bqNJMQTnH6iOR7">
 </p>
@@ -92,7 +92,7 @@ This above onMessageArrived function is called when a message is recieved by the
 This publish function publishes user inputs from the webpage to the MQTT server for the given topic which NodeMCU can grab. First it will parse the strings to a JSON format and then it will convert that to a string before publishing.
 
 This is the basic idea of the system when it comes to the web application side. 
-more information can be found refering http://www.steves-internet-guide.com/mqtt-websockets/ this webpage. I used online resources like this for this project
+more information can be found refering [Online Resources](http://www.steves-internet-guide.com/mqtt-websockets/). I used online resources like this for this project
 
 ### Arduino (NodeMCU) Code Brief Walkthrough
 
