@@ -30,6 +30,6 @@
 - Vero Board
 
 ### Javascript Code Walkthrough
-'''js
+```js
 function
-'''
+```
