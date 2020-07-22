@@ -30,6 +30,31 @@
 - Vero Board
 
 ### Javascript Code Walkthrough
+websocket.js file is discussed here. This file is the backbone since this handles all the communications with MQTT and siplaying all in the webpage
+
 ```js
-function
+  function startConnect() {
+    // Generate a random client ID
+    clientID = "clientID-" + parseInt(Math.random() * 100);
+
+    // Fetch the hostname/IP address and port number from the form
+    host = "test.mosquitto.org";
+    port = "8081";
+
+    // Print output for the user in the messages div
+
+    // Initialize new Paho client connection
+    client = new Paho.MQTT.Client(host, Number(port), clientID);
+
+    // Set callback handlers
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+
+    // Connect the client, if successful, call onConnect function
+    console.log("Connecting...");
+    client.connect({
+      onSuccess: onConnect,
+      useSSL: true,
+    });
+  }
 ```
