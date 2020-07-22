@@ -90,3 +90,6 @@ This above onMessageArrived function is called when a message is recieved by the
   }
 ```
 This publish function publishes user inputs from the webpage to the MQTT server for the given topic which NodeMCU can grab. First it will parse the strings to a JSON format and then it will convert that to a string before publishing.
+
+This is the basic idea of the system when it comes to the web application side. 
+more information can be found refering http://www.steves-internet-guide.com/mqtt-websockets/ this wbpage. I used online resources like this for this project
