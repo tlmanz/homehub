@@ -3,7 +3,7 @@
 
 ### Introduction
   
-  This is a small implementation of a smart home application with ESP8266 (NodeMCU). Arduino IDE is used for programming and VSCode used for Web page development.  For communication MQTT protocol was used. JSON is the main data type used to send data between MQTT server and NodeMCU since JSON is a very versatile data format. As an interface web page was designed using HTML and JavaScript. Paho MQTT client is used in both NodeMCU and Web page. Since this is a prototype, user authentication was not considered. Hosted web page can be found in https://homehub.projects.com.lk.<br> Website is hosted with 000webhost free service
+  This is a small implementation of a smart home application with ESP8266 (NodeMCU). Arduino IDE is used for programming and VSCode used for Web page development.  For communication MQTT protocol was used. JSON is the main data type used to send data between MQTT server and NodeMCU since JSON is a very versatile data format. As an interface web page was designed using HTML and JavaScript. Paho MQTT client is used in both NodeMCU and Web page. Since this is a prototype, user authentication was not considered. Hosted web page can be found in https://homehub.projects.com.lk.<br> Website is hosted with in a private server
   <p align="center">
   <img width="600" height="300" src="https://drive.google.com/uc?export=view&id=1uO93WY-KICRMWEp0Y-bqNJMQTnH6iOR7">
 </p>
@@ -28,3 +28,5 @@
 - 1 Small Servo Motor
 - Wires
 - Vero Board
+
+### Javascript Code Highlight
