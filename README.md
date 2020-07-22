@@ -31,7 +31,6 @@
 
 ### Javascript Code Walkthrough
 websocket.js file is discussed here. This file is the backbone since this handles all the communications with MQTT and siplaying all in the webpage
-
 ```js
   function startConnect() {
     // Generate a random client ID
@@ -58,3 +57,4 @@ websocket.js file is discussed here. This file is the backbone since this handle
     });
   }
 ```
+This function starts the connection to the MQTT server. In here public MQTT server was used for testing purposes. It connects to the port 8081 which is the websocket port and 8081 uses TLS encryption to connect over a secure connection. Comments are used to describe the code more.
